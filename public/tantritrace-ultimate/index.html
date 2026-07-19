@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="TantriTrace is a working handloom authenticity web app with product registration, SHA-256 verification, tamper-evident ledger, weaver profiles, live Node API sync, scan analytics, and exportable records."
+    />
+    <title>TantriTrace - Handloom Authenticity System</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#101827" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" data-nav="overview" aria-label="TantriTrace overview">
+          <span class="brand-mark">TT</span>
+          <span>
+            <strong>TantriTrace</strong>
+            <small>Authenticity system</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Application sections">
+          <button class="active" type="button" data-nav="overview">Operations</button>
+          <button type="button" data-nav="verify">Verify</button>
+          <button type="button" data-nav="consumer">Consumer</button>
+          <button type="button" data-nav="registry">Registry</button>
+          <button type="button" data-nav="weavers">Weavers</button>
+          <button type="button" data-nav="ledger">Ledger</button>
+          <button type="button" data-nav="analytics">Analytics</button>
+          <button type="button" data-nav="impact">Impact</button>
+          <button type="button" data-nav="integrations">Integrations</button>
+        </nav>
+
+        <div class="sync-card">
+          <span class="label">Network</span>
+          <strong id="networkState">Connecting</strong>
+          <small id="syncState">Detecting API sync layer</small>
+          <button class="link-btn" id="exportState" type="button">Export registry JSON</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <h1>Handloom authenticity control center</h1>
+          </div>
+          <div class="top-actions">
+            <label class="select-control">
+              <span>Story language</span>
+              <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">Hindi romanized</option>
+                <option value="ta">Tamil romanized</option>
+                <option value="te">Telugu romanized</option>
+                <option value="bn">Bengali romanized</option>
+              </select>
+            </label>
+            <label class="switch">
+              <input id="liveMode" type="checkbox" checked />
+              <span>Live scan stream</span>
+            </label>
+            <button class="btn secondary" id="resetDemo" type="button">Reset sample data</button>
+          </div>
+        </header>
+
+        <section class="kpis" aria-label="System metrics">
+          <article>
+            <span>Verified products</span>
+            <strong id="metricProducts">0</strong>
+            <small>Certified trace records</small>
+          </article>
+          <article>
+            <span>Registered weavers</span>
+            <strong id="metricWeavers">0</strong>
+            <small>Profiles linked to products</small>
+          </article>
+          <article>
+            <span>Total scans</span>
+            <strong id="metricScans">0</strong>
+            <small>Real-time verification events</small>
+          </article>
+          <article>
+            <span>Chain integrity</span>
+            <strong id="metricIntegrity">Valid</strong>
+            <small>Ledger hash verification</small>
+          </article>
+        </section>
+
+        <section class="view active" id="view-overview">
+          <div class="grid overview-grid">
+            <article class="panel scan-console">
+              <div class="panel-head">
+                <div>
+                  <span class="label">Verification station</span>
+                  <h2>Scan a product trace</h2>
+                </div>
+                <span id="scanStatus" class="status">Ready</span>
+              </div>
+
+              <div class="scan-layout">
+                <canvas id="traceCanvas" width="248" height="248" aria-label="Generated trace tag"></canvas>
+                <div class="scan-controls">
+                  <label for="productSelect">Product</label>
+                  <select id="productSelect"></select>
+                  <button class="btn primary" id="scanNow" type="button">Verify selected product</button>
+                  <button class="btn ghost" id="tamperDemo" type="button">Run tamper check</button>
+                </div>
+              </div>
+
+              <div class="result-card" id="verificationResult"></div>
+            </article>
+
+            <article class="panel certificate-panel">
+              <div class="certificate" id="certificate"></div>
+            </article>
+
+            <article class="panel hero-panel">
+              <img src="../assets/tantritrace-hero.png" alt="Verified handloom textile on an artisan table" />
+              <div>
+                <span class="label">Consumer story page</span>
+                <h2 id="storyProductName">Product story</h2>
+                <p id="storyProductText"></p>
+              </div>
+            </article>
+
+            <article class="panel feed-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="label">Live activity</span>
+                  <h2>Event feed</h2>
+                </div>
+                <span id="eventCount" class="badge">0 events</span>
+              </div>
+              <div class="event-feed" id="eventFeed"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-verify">
+          <div class="grid two-col">
+            <article class="panel">
+              <span class="label">Manual verification</span>
+              <h2>Verify by product ID, certificate ID, or hash</h2>
+              <div class="field-row">
+                <input id="verifyInput" type="text" placeholder="Paste product ID, certificate ID, or trace hash" />
+                <button class="btn primary" id="verifyInputBtn" type="button">Verify</button>
+              </div>
+              <div id="manualVerifyResult" class="result-card compact"></div>
+            </article>
+
+            <article class="panel">
+              <span class="label">Fraud risk queue</span>
+              <h2>Suspicious scans</h2>
+              <div id="fraudQueue" class="queue"></div>
+            </article>
+          </div>
+
+          <article class="panel retailer-panel">
+            <div class="panel-head">
+              <div>
+                <span class="label">Retailer station</span>
+                <h2>Batch scan and risk scoring</h2>
+              </div>
+              <span id="riskBadge" class="badge">Risk model ready</span>
+            </div>
+            <div class="retailer-grid">
+              <label>
+                Scan location
+                <select id="scanSource">
+                  <option value="Delhi export counter">Delhi export counter</option>
+                  <option value="Hyderabad craft fair">Hyderabad craft fair</option>
+                  <option value="Mumbai retail partner">Mumbai retail partner</option>
+                  <option value="Bengaluru online return desk">Bengaluru online return desk</option>
+                </select>
+              </label>
+              <label>
+                Batch size
+                <input id="batchCount" type="number" min="1" max="25" value="6" />
+              </label>
+              <button class="btn primary" id="batchScan" type="button">Run batch scan</button>
+            </div>
+            <div id="riskModel" class="risk-grid"></div>
+          </article>
+
+          <article class="panel">
+            <span class="label">Product journey</span>
+            <h2>Supply chain trace</h2>
+            <div class="journey" id="journey"></div>
+          </article>
+        </section>
+
+        <section class="view" id="view-consumer">
+          <div class="grid consumer-grid">
+            <article class="panel consumer-proof">
+              <div class="panel-head">
+                <div>
+                  <span class="label">Public certificate</span>
+                  <h2 id="consumerTitle">Verified handloom story</h2>
+                </div>
+                <button class="btn secondary" id="listenStory" type="button">Listen story</button>
+              </div>
+              <div id="consumerCertificate" class="consumer-certificate"></div>
+              <div class="field-row">
+                <input id="shareUrl" type="text" readonly aria-label="Shareable certificate URL" />
+                <button class="btn primary" id="copyShare" type="button">Copy link</button>
+              </div>
+              <button class="btn ghost" id="downloadReceipt" type="button">Download buyer receipt</button>
+            </article>
+
+            <article class="panel weave-panel">
+              <span class="label">Weave inspection</span>
+              <h2>Pattern microscope</h2>
+              <div id="weaveViewer" class="weave-viewer" aria-label="Interactive textile pattern preview"></div>
+              <div id="culturalCard" class="cultural-card"></div>
+            </article>
+
+            <article class="panel wide">
+              <span class="label">Buyer impact</span>
+              <h2>What the scan proves</h2>
+              <div id="buyerImpact" class="impact-strip"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-registry">
+          <div class="grid two-col">
+            <article class="panel">
+              <span class="label">Register product</span>
+              <h2>Create a new authenticity record</h2>
+              <form id="productForm" class="form-grid">
+                <label>
+                  Product name
+                  <input name="name" required value="Natural Dye Ikat Stole" />
+                </label>
+                <label>
+                  Weaver
+                  <select name="weaverId" id="productWeaverSelect" required></select>
+                </label>
+                <label>
+                  Craft
+                  <input name="craft" required value="Pochampally Ikat" />
+                </label>
+                <label>
+                  Category
+                  <input name="category" required value="Stole" />
+                </label>
+                <label>
+                  Materials
+                  <input name="material" required value="Cotton silk, natural indigo dye" />
+                </label>
+                <label>
+                  Technique
+                  <input name="technique" required value="Single ikat resist dye" />
+                </label>
+                <label>
+                  GI / certification mark
+                  <input name="gi" required value="GI-055" />
+                </label>
+                <label>
+                  Days to make
+                  <input name="days" required type="number" min="1" value="8" />
+                </label>
+                <label>
+                  Base price
+                  <input name="price" required type="number" min="1" value="4200" />
+                </label>
+                <label>
+                  Verified premium %
+                  <input name="premium" required type="number" min="0" max="100" value="28" />
+                </label>
+                <label class="full">
+                  Product story
+                  <textarea name="story" required>Handwoven with natural indigo in a registered Pochampally cluster, designed for daily wear while preserving the ikat grid tradition.</textarea>
+                </label>
+                <button class="btn ghost full" id="generateStory" type="button">Generate stronger product story</button>
+                <button class="btn primary full" type="submit">Register and hash product</button>
+              </form>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <span class="label">Registry</span>
+                  <h2>Certified products</h2>
+                </div>
+                <input id="productSearch" class="search" type="search" placeholder="Search products" />
+              </div>
+              <div id="productGrid" class="product-grid"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-weavers">
+          <div class="grid two-col">
+            <article class="panel">
+              <span class="label">Register weaver</span>
+              <h2>Create a weaver profile</h2>
+              <form id="weaverForm" class="form-grid">
+                <label>
+                  Name
+                  <input name="name" required value="Anita Rao" />
+                </label>
+                <label>
+                  Role
+                  <input name="role" required value="Natural dye specialist" />
+                </label>
+                <label>
+                  Village
+                  <input name="village" required value="Pochampally" />
+                </label>
+                <label>
+                  State
+                  <input name="state" required value="Telangana" />
+                </label>
+                <label>
+                  Craft
+                  <input name="craft" required value="Pochampally Ikat" />
+                </label>
+                <label>
+                  Cluster
+                  <input name="cluster" required value="Pochampally Handloom Cluster" />
+                </label>
+                <label>
+                  Experience years
+                  <input name="years" required type="number" min="1" value="16" />
+                </label>
+                <label>
+                  Family generations
+                  <input name="generations" required type="number" min="1" value="2" />
+                </label>
+                <label class="full">
+                  Story
+                  <textarea name="story" required>Works with natural dye batches and trains younger weavers to keep handloom color processes consistent.</textarea>
+                </label>
+                <button class="btn ghost full" id="voiceStory" type="button">Voice capture story</button>
+                <button class="btn primary full" type="submit">Save weaver profile</button>
+              </form>
+            </article>
+
+            <article class="panel">
+              <span class="label">Weaver portfolio</span>
+              <h2>Profiles and income lift</h2>
+              <div id="weaverDirectory" class="weaver-directory"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-ledger">
+          <div class="grid two-col">
+            <article class="panel">
+              <span class="label">Ledger integrity</span>
+              <h2>Tamper-evident chain</h2>
+              <p class="muted">
+                Each product registration and scan creates a block containing the previous
+                block hash. The app recalculates hashes to detect tampering.
+              </p>
+              <button class="btn secondary" id="verifyChain" type="button">Re-verify ledger integrity</button>
+              <div id="chainResult" class="result-card compact"></div>
+            </article>
+            <article class="panel">
+              <span class="label">Export payload</span>
+              <h2>Government/API-ready record</h2>
+              <pre id="apiPayload" class="code-block"></pre>
+            </article>
+          </div>
+          <article class="panel">
+            <span class="label">Recent blocks</span>
+            <h2>Ledger blocks</h2>
+            <div id="ledgerBlocks" class="ledger-blocks"></div>
+          </article>
+        </section>
+
+        <section class="view" id="view-analytics">
+          <div class="grid analytics-grid">
+            <article class="panel wide">
+              <span class="label">Real-time scans</span>
+              <h2>Verification trend</h2>
+              <svg id="trendChart" viewBox="0 0 760 260" role="img" aria-label="Verification trend chart"></svg>
+            </article>
+            <article class="panel">
+              <span class="label">Craft coverage</span>
+              <h2>Products by craft</h2>
+              <div id="craftChart" class="bars"></div>
+            </article>
+            <article class="panel">
+              <span class="label">Income impact</span>
+              <h2>Premium by cluster</h2>
+              <div id="premiumChart" class="bars"></div>
+            </article>
+            <article class="panel">
+              <span class="label">Anomaly model</span>
+              <h2>Current risk distribution</h2>
+              <div id="riskChart" class="bars"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-impact">
+          <div class="grid impact-grid">
+            <article class="panel wide">
+              <span class="label">Cluster intelligence</span>
+              <h2>Where proof creates value</h2>
+              <div id="clusterMap" class="cluster-map"></div>
+            </article>
+            <article class="panel">
+              <span class="label">Livelihood signal</span>
+              <h2>Verified income lift</h2>
+              <div id="impactMetrics" class="impact-metrics"></div>
+            </article>
+            <article class="panel">
+              <span class="label">Scale readiness</span>
+              <h2>Submission strength</h2>
+              <div id="readinessScore" class="readiness"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-integrations">
+          <div class="grid two-col">
+            <article class="panel">
+              <span class="label">Integration readiness</span>
+              <h2>System capabilities</h2>
+              <div class="capability-list">
+                <article><strong>Web Crypto SHA-256</strong><span>Browser-native product and block hashing.</span></article>
+                <article><strong>Node API persistence</strong><span>Live server stores registry state as durable JSON.</span></article>
+                <article><strong>Server-Sent Events</strong><span>Open dashboards receive scan and registry updates in real time.</span></article>
+                <article><strong>Offline fallback</strong><span>Records continue locally when the backend is unavailable.</span></article>
+                <article><strong>PWA cache</strong><span>Core interface and visual assets are cached for low-bandwidth demos.</span></article>
+                <article><strong>API export</strong><span>One-click JSON package for a backend, cooperative, or government registry.</span></article>
+              </div>
+            </article>
+            <article class="panel">
+              <span class="label">Endpoint blueprint</span>
+              <h2>Production API contract</h2>
+              <pre class="code-block">GET  /api/health
+GET  /api/state
+PUT  /api/state
+GET  /api/events
+POST /api/scan
+POST /api/verify
+POST /api/products
+GET  /api/products/{id}/certificate
+POST /api/weavers
+GET  /api/ledger/verify
+POST /api/fraud/report
+POST /api/reset</pre>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="downloadTemplate"></template>
+    <script src="app.js"></script>
+  </body>
+</html>

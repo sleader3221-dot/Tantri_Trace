@@ -1,0 +1,16 @@
+{
+  "name": "TantriTrace Handloom Authenticity",
+  "short_name": "TantriTrace",
+  "description": "Handloom authenticity, weaver story, QR verification, and tamper-evident registry.",
+  "start_url": "/tantritrace-ultimate/",
+  "display": "standalone",
+  "background_color": "#eef2f6",
+  "theme_color": "#101827",
+  "icons": [
+    {
+      "src": "../favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

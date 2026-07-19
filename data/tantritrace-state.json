@@ -1,0 +1,557 @@
+{
+  "version": 2,
+  "weavers": [
+    {
+      "id": "W001",
+      "name": "Lakshmi Devi",
+      "role": "Ikat master weaver",
+      "village": "Bhoodan Pochampally",
+      "state": "Telangana",
+      "craft": "Pochampally Ikat",
+      "cluster": "Pochampally Handloom Cluster",
+      "years": 25,
+      "generations": 3,
+      "currentIncome": 18000,
+      "story": "Lakshmi learned tie-and-dye calculations beside her grandmother. TantriTrace gives her product-level proof where the market usually sees only a saree."
+    },
+    {
+      "id": "W002",
+      "name": "Ramesh Kumar",
+      "role": "Banarasi brocade artisan",
+      "village": "Lallapura",
+      "state": "Uttar Pradesh",
+      "craft": "Banarasi Silk",
+      "cluster": "Banaras Handloom Cluster",
+      "years": 35,
+      "generations": 5,
+      "currentIncome": 25000,
+      "story": "Ramesh carries five generations of brocade memory. His certificate keeps the weaver name attached to the final retail value."
+    },
+    {
+      "id": "W003",
+      "name": "Meenakshi Amma",
+      "role": "Korvai silk specialist",
+      "village": "Pillayarpalayam",
+      "state": "Tamil Nadu",
+      "craft": "Kanchipuram Silk",
+      "cluster": "Kanchipuram Silk Cluster",
+      "years": 30,
+      "generations": 4,
+      "currentIncome": 22000,
+      "story": "Meenakshi protects Korvai interlock weaving, where the border and body become one durable fabric."
+    },
+    {
+      "id": "W004",
+      "name": "Kabir Ansari",
+      "role": "Chanderi texture expert",
+      "village": "Chanderi",
+      "state": "Madhya Pradesh",
+      "craft": "Chanderi Weave",
+      "cluster": "Chanderi Handloom Cluster",
+      "years": 20,
+      "generations": 6,
+      "currentIncome": 20000,
+      "story": "Kabir works with fabric so light it feels almost weightless. Traceable storytelling makes subtle handwork visible online."
+    },
+    {
+      "id": "W005",
+      "name": "Dipali Borah",
+      "role": "Muga silk weaver",
+      "village": "Sualkuchi",
+      "state": "Assam",
+      "craft": "Muga Silk",
+      "cluster": "Sualkuchi Silk Cluster",
+      "years": 22,
+      "generations": 4,
+      "currentIncome": 21000,
+      "story": "Dipali weaves naturally golden silk from Assam. Export-ready proof protects rarity and origin."
+    },
+    {
+      "id": "W006",
+      "name": "Rajan Patwa",
+      "role": "Patan Patola custodian",
+      "village": "Patan",
+      "state": "Gujarat",
+      "craft": "Patola",
+      "cluster": "Patan Patola Cluster",
+      "years": 40,
+      "generations": 7,
+      "currentIncome": 60000,
+      "story": "Rajan practices one of the hardest double ikat traditions in the world. Item-level proof protects a high-value craft from counterfeit claims."
+    }
+  ],
+  "products": [
+    {
+      "id": "TT-PCH-001",
+      "name": "Telia Rumal Ikat Saree",
+      "weaverId": "W001",
+      "craft": "Pochampally Ikat",
+      "category": "Saree",
+      "material": "Mercerized cotton, natural dye",
+      "technique": "Double ikat resist dye",
+      "gi": "GI-055",
+      "days": 14,
+      "price": 8500,
+      "premium": 32,
+      "scans": 142,
+      "trust": 97,
+      "palette": [
+        "#bf2f38",
+        "#111827",
+        "#f8fafc"
+      ],
+      "story": "A precise red-black-white grid inspired by Telia Rumal geometry, planned at yarn level before weaving begins.",
+      "journey": [
+        [
+          "Yarn Bank",
+          "2026-06-22",
+          "Nalgonda yarn bank",
+          "Cotton yarn lot recorded with supplier receipt."
+        ],
+        [
+          "Natural Dye",
+          "2026-06-24",
+          "Pochampally dye house",
+          "Resist-tied yarn dyed in red and black."
+        ],
+        [
+          "Loom Weaving",
+          "2026-07-03",
+          "Lakshmi Devi home loom",
+          "Warp and weft alignment checked every repeat."
+        ],
+        [
+          "GI Quality Check",
+          "2026-07-07",
+          "Cluster verification desk",
+          "Handloom structure and GI claim verified."
+        ],
+        [
+          "Market Scan",
+          "2026-07-12",
+          "Hyderabad craft fair",
+          "QR tag activated and buyer story published."
+        ]
+      ],
+      "hash": "87ef0dccf3b4ea43fd9ba38d1684831e2e4aba265f22e6a6f63e37141fd62d70",
+      "certId": "TT-CERT-TT-PCH-001-87EF0D",
+      "status": "verified",
+      "blockIndex": 1
+    },
+    {
+      "id": "TT-BAN-003",
+      "name": "Katan Silk Brocade Lehenga Panel",
+      "weaverId": "W002",
+      "craft": "Banarasi Silk",
+      "category": "Fabric",
+      "material": "Katan silk, gold zari",
+      "technique": "Kadwa brocade",
+      "gi": "GI-114",
+      "days": 25,
+      "price": 35000,
+      "premium": 41,
+      "scans": 325,
+      "trust": 98,
+      "palette": [
+        "#7f1d1d",
+        "#d99b32",
+        "#3f2a19"
+      ],
+      "story": "A bridal-grade brocade where each motif is woven separately, reducing waste and proving artisanal labor.",
+      "journey": [
+        [
+          "Silk Sourcing",
+          "2026-05-15",
+          "Varanasi silk exchange",
+          "Katan silk and zari source details captured."
+        ],
+        [
+          "Naksha Translation",
+          "2026-05-20",
+          "Lallapura design room",
+          "Floral jaal converted into loom-ready instructions."
+        ],
+        [
+          "Kadwa Weaving",
+          "2026-06-12",
+          "Ramesh Kumar loom",
+          "Each motif woven separately to prove hand process."
+        ],
+        [
+          "Finishing",
+          "2026-06-16",
+          "Banaras finishing unit",
+          "Zari inspection and fabric rolling completed."
+        ],
+        [
+          "Certificate Issue",
+          "2026-06-18",
+          "Weavers Service Centre",
+          "GI and silk mark data attached to certificate."
+        ]
+      ],
+      "hash": "8eee1caf1f2635033f0c27ee6c5325db6da242da398ba2ca39d13b60a18df496",
+      "certId": "TT-CERT-TT-BAN-003-8EEE1C",
+      "status": "verified",
+      "blockIndex": 2
+    },
+    {
+      "id": "TT-KAN-005",
+      "name": "Korvai Temple Border Saree",
+      "weaverId": "W003",
+      "craft": "Kanchipuram Silk",
+      "category": "Saree",
+      "material": "Mulberry silk, half-fine zari",
+      "technique": "Korvai interlock",
+      "gi": "GI-021",
+      "days": 18,
+      "price": 22000,
+      "premium": 36,
+      "scans": 175,
+      "trust": 96,
+      "palette": [
+        "#1d4ed8",
+        "#be185d",
+        "#f59e0b"
+      ],
+      "story": "A blue-magenta saree where body and border are interlocked on loom, carrying temple-inspired forms into an heirloom.",
+      "hash": "484cc27897d99249a3b048d48b5f8d5cf526e2658fc8be4a33e69bd81b066232",
+      "certId": "TT-CERT-TT-KAN-005-484CC2",
+      "status": "verified",
+      "journey": [
+        [
+          "Raw Material",
+          "2026-06-01",
+          "Registered cluster source",
+          "Material lot and weaver allocation logged."
+        ],
+        [
+          "Design Setup",
+          "2026-06-05",
+          "Cluster design desk",
+          "Motif, palette, and cultural note validated."
+        ],
+        [
+          "Loom Production",
+          "2026-06-18",
+          "Artisan home loom",
+          "Handloom progress recorded with technique checkpoint."
+        ],
+        [
+          "Quality Proof",
+          "2026-06-22",
+          "Verification desk",
+          "GI claim and final finish checked before QR activation."
+        ],
+        [
+          "Consumer Scan",
+          "2026-07-01",
+          "Retail or export buyer",
+          "Buyer scan opens weaver story and certificate."
+        ]
+      ],
+      "blockIndex": 3
+    },
+    {
+      "id": "TT-CHD-007",
+      "name": "Asharfi Booti Chanderi Sico",
+      "weaverId": "W004",
+      "craft": "Chanderi Weave",
+      "category": "Saree",
+      "material": "Silk warp, cotton weft, zari",
+      "technique": "Ek nali weaving",
+      "gi": "GI-051",
+      "days": 10,
+      "price": 8500,
+      "premium": 27,
+      "scans": 110,
+      "trust": 94,
+      "palette": [
+        "#9ecbb5",
+        "#d6a637",
+        "#f8fafc"
+      ],
+      "story": "A feather-light silk-cotton fabric dotted with coin-like zari bootis and verified origin.",
+      "hash": "78a6efa66718611328345a449739ff348f08784970a052847d2c1530525b05f9",
+      "certId": "TT-CERT-TT-CHD-007-78A6EF",
+      "status": "verified",
+      "journey": [
+        [
+          "Raw Material",
+          "2026-06-01",
+          "Registered cluster source",
+          "Material lot and weaver allocation logged."
+        ],
+        [
+          "Design Setup",
+          "2026-06-05",
+          "Cluster design desk",
+          "Motif, palette, and cultural note validated."
+        ],
+        [
+          "Loom Production",
+          "2026-06-18",
+          "Artisan home loom",
+          "Handloom progress recorded with technique checkpoint."
+        ],
+        [
+          "Quality Proof",
+          "2026-06-22",
+          "Verification desk",
+          "GI claim and final finish checked before QR activation."
+        ],
+        [
+          "Consumer Scan",
+          "2026-07-01",
+          "Retail or export buyer",
+          "Buyer scan opens weaver story and certificate."
+        ]
+      ],
+      "blockIndex": 4
+    },
+    {
+      "id": "TT-MUG-009",
+      "name": "Golden Muga Mekhela Sador",
+      "weaverId": "W005",
+      "craft": "Muga Silk",
+      "category": "Mekhela Sador",
+      "material": "Muga silk, eri accents",
+      "technique": "Throw shuttle weaving",
+      "gi": "GI-101",
+      "days": 16,
+      "price": 18500,
+      "premium": 34,
+      "scans": 221,
+      "trust": 95,
+      "palette": [
+        "#d6a13d",
+        "#7c2d12",
+        "#14532d"
+      ],
+      "story": "A naturally golden Assam silk set authenticated from cocoon sourcing to loom completion.",
+      "hash": "55d91453a28368307b3d4378b5c6c232c93ba3e59bddafbbc0712f1432c09046",
+      "certId": "TT-CERT-TT-MUG-009-55D914",
+      "status": "verified",
+      "journey": [
+        [
+          "Raw Material",
+          "2026-06-01",
+          "Registered cluster source",
+          "Material lot and weaver allocation logged."
+        ],
+        [
+          "Design Setup",
+          "2026-06-05",
+          "Cluster design desk",
+          "Motif, palette, and cultural note validated."
+        ],
+        [
+          "Loom Production",
+          "2026-06-18",
+          "Artisan home loom",
+          "Handloom progress recorded with technique checkpoint."
+        ],
+        [
+          "Quality Proof",
+          "2026-06-22",
+          "Verification desk",
+          "GI claim and final finish checked before QR activation."
+        ],
+        [
+          "Consumer Scan",
+          "2026-07-01",
+          "Retail or export buyer",
+          "Buyer scan opens weaver story and certificate."
+        ]
+      ],
+      "blockIndex": 5
+    },
+    {
+      "id": "TT-PAT-011",
+      "name": "Navaratna Double Ikat Patola",
+      "weaverId": "W006",
+      "craft": "Patola",
+      "category": "Saree",
+      "material": "Pure silk, natural dyes",
+      "technique": "Double ikat alignment",
+      "gi": "GI-376",
+      "days": 180,
+      "price": 180000,
+      "premium": 48,
+      "scans": 612,
+      "trust": 99,
+      "palette": [
+        "#dc2626",
+        "#1d4ed8",
+        "#facc15"
+      ],
+      "story": "A reversible, high-precision Patola whose pattern is dyed into both warp and weft before weaving.",
+      "hash": "8a141dc0b5939c416d16c4277746fc7be6ea4b60c786d3d1cb0c5435ff1d4011",
+      "certId": "TT-CERT-TT-PAT-011-8A141D",
+      "status": "verified",
+      "journey": [
+        [
+          "Raw Material",
+          "2026-06-01",
+          "Registered cluster source",
+          "Material lot and weaver allocation logged."
+        ],
+        [
+          "Design Setup",
+          "2026-06-05",
+          "Cluster design desk",
+          "Motif, palette, and cultural note validated."
+        ],
+        [
+          "Loom Production",
+          "2026-06-18",
+          "Artisan home loom",
+          "Handloom progress recorded with technique checkpoint."
+        ],
+        [
+          "Quality Proof",
+          "2026-06-22",
+          "Verification desk",
+          "GI claim and final finish checked before QR activation."
+        ],
+        [
+          "Consumer Scan",
+          "2026-07-01",
+          "Retail or export buyer",
+          "Buyer scan opens weaver story and certificate."
+        ]
+      ],
+      "blockIndex": 6
+    }
+  ],
+  "ledger": [
+    {
+      "index": 0,
+      "type": "GENESIS",
+      "timestamp": "2026-07-19T16:07:22.544Z",
+      "previousHash": "0",
+      "payload": {
+        "app": "TantriTrace",
+        "standard": "handloom-auth-v2"
+      },
+      "hash": "303c7ec7e32511b073a01063b61c133cbbe3a314dfdae42eafd203daaf719cca"
+    },
+    {
+      "index": 1,
+      "type": "REGISTER_PRODUCT",
+      "timestamp": "2026-07-19T16:07:22.544Z",
+      "previousHash": "303c7ec7e32511b073a01063b61c133cbbe3a314dfdae42eafd203daaf719cca",
+      "payload": {
+        "productId": "TT-PCH-001",
+        "hash": "87ef0dccf3b4ea43fd9ba38d1684831e2e4aba265f22e6a6f63e37141fd62d70",
+        "gi": "GI-055",
+        "weaverId": "W001"
+      },
+      "hash": "c2bebce50baf8fcebe94b16e0198c266430fd70bd6b60c9d5f7eee3bf700ebcc"
+    },
+    {
+      "index": 2,
+      "type": "REGISTER_PRODUCT",
+      "timestamp": "2026-07-19T16:07:22.544Z",
+      "previousHash": "c2bebce50baf8fcebe94b16e0198c266430fd70bd6b60c9d5f7eee3bf700ebcc",
+      "payload": {
+        "productId": "TT-BAN-003",
+        "hash": "8eee1caf1f2635033f0c27ee6c5325db6da242da398ba2ca39d13b60a18df496",
+        "gi": "GI-114",
+        "weaverId": "W002"
+      },
+      "hash": "b7b60f3803b6ed5b87eb432c908e90cd7626f20489fe491bb49a65e45a3c8321"
+    },
+    {
+      "index": 3,
+      "type": "REGISTER_PRODUCT",
+      "timestamp": "2026-07-19T16:07:22.544Z",
+      "previousHash": "b7b60f3803b6ed5b87eb432c908e90cd7626f20489fe491bb49a65e45a3c8321",
+      "payload": {
+        "productId": "TT-KAN-005",
+        "hash": "484cc27897d99249a3b048d48b5f8d5cf526e2658fc8be4a33e69bd81b066232",
+        "gi": "GI-021",
+        "weaverId": "W003"
+      },
+      "hash": "15070856527f6fc1fb1680a95bab80b65eb042c0f772e27d1dc04efa7819fbe9"
+    },
+    {
+      "index": 4,
+      "type": "REGISTER_PRODUCT",
+      "timestamp": "2026-07-19T16:07:22.544Z",
+      "previousHash": "15070856527f6fc1fb1680a95bab80b65eb042c0f772e27d1dc04efa7819fbe9",
+      "payload": {
+        "productId": "TT-CHD-007",
+        "hash": "78a6efa66718611328345a449739ff348f08784970a052847d2c1530525b05f9",
+        "gi": "GI-051",
+        "weaverId": "W004"
+      },
+      "hash": "88ef32e39da391a6a55c0ad208ee16d45a3790f9527c86bff09d46a5b135c35c"
+    },
+    {
+      "index": 5,
+      "type": "REGISTER_PRODUCT",
+      "timestamp": "2026-07-19T16:07:22.544Z",
+      "previousHash": "88ef32e39da391a6a55c0ad208ee16d45a3790f9527c86bff09d46a5b135c35c",
+      "payload": {
+        "productId": "TT-MUG-009",
+        "hash": "55d91453a28368307b3d4378b5c6c232c93ba3e59bddafbbc0712f1432c09046",
+        "gi": "GI-101",
+        "weaverId": "W005"
+      },
+      "hash": "eb1cbb231a09942a8897215189b358bb34d81281b8fefe77ebf12e74d9f7b8ac"
+    },
+    {
+      "index": 6,
+      "type": "REGISTER_PRODUCT",
+      "timestamp": "2026-07-19T16:07:22.545Z",
+      "previousHash": "eb1cbb231a09942a8897215189b358bb34d81281b8fefe77ebf12e74d9f7b8ac",
+      "payload": {
+        "productId": "TT-PAT-011",
+        "hash": "8a141dc0b5939c416d16c4277746fc7be6ea4b60c786d3d1cb0c5435ff1d4011",
+        "gi": "GI-376",
+        "weaverId": "W006"
+      },
+      "hash": "0ae58178ceeeba2177dfdaac00fa3abeb3731ea25c3ecdb1d7dea5a8f8121e0b"
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-1784477242545-1845",
+      "timestamp": "2026-07-19T16:07:22.545Z",
+      "title": "System initialized",
+      "detail": "Seed products hashed and registered on the live Node API."
+    }
+  ],
+  "fraud": [],
+  "trend": [
+    [
+      "Jan",
+      1200
+    ],
+    [
+      "Feb",
+      1900
+    ],
+    [
+      "Mar",
+      3100
+    ],
+    [
+      "Apr",
+      5200
+    ],
+    [
+      "May",
+      8800
+    ],
+    [
+      "Jun",
+      15300
+    ],
+    [
+      "Jul",
+      27100
+    ]
+  ]
+}
