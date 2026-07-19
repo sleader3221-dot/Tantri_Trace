@@ -36,6 +36,20 @@ Default verification input:
 TT-PCH-001
 ```
 
+## Vercel Deployment
+
+This repository includes `vercel.json` for a static Vercel deployment.
+
+| Setting | Value |
+|---|---|
+| Framework Preset | Other |
+| Build Command | Managed by `vercel.json` |
+| Output Directory | `public` |
+| Root Redirect | `/` -> `/tantritrace-ultimate/` |
+| Runtime API | Local Node prototype via `npm run serve:prototype`; deployed frontend falls back to browser-local state if `/api` is unavailable |
+
+Deploy from GitHub by importing `sleader3221-dot/Tantri_Trace` into Vercel. The static app works without installing dependencies because the production prototype files already live under `public/tantritrace-ultimate/`.
+
 ## What Makes It Submission-Ready
 
 | Judge Lens | TantriTrace Evidence | Working Prototype Surface |
