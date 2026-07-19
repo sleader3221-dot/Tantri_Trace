@@ -54,10 +54,10 @@
               <span>Story language</span>
               <select id="languageSelect">
                 <option value="en">English</option>
-                <option value="hi">Hindi romanized</option>
-                <option value="ta">Tamil romanized</option>
-                <option value="te">Telugu romanized</option>
-                <option value="bn">Bengali romanized</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ta">தமிழ்</option>
+                <option value="te">తెలుగు</option>
+                <option value="bn">বাংলা</option>
               </select>
             </label>
             <label class="switch">
@@ -103,11 +103,18 @@
               </div>
 
               <div class="scan-layout">
-                <canvas id="traceCanvas" width="248" height="248" aria-label="Generated trace tag"></canvas>
+                <canvas
+                  id="traceCanvas"
+                  width="248"
+                  height="248"
+                  aria-label="Generated trace tag"
+                ></canvas>
                 <div class="scan-controls">
                   <label for="productSelect">Product</label>
                   <select id="productSelect"></select>
-                  <button class="btn primary" id="scanNow" type="button">Verify selected product</button>
+                  <button class="btn primary" id="scanNow" type="button">
+                    Verify selected product
+                  </button>
                   <button class="btn ghost" id="tamperDemo" type="button">Run tamper check</button>
                 </div>
               </div>
@@ -120,7 +127,10 @@
             </article>
 
             <article class="panel hero-panel">
-              <img src="../assets/tantritrace-hero.png" alt="Verified handloom textile on an artisan table" />
+              <img
+                src="../assets/tantritrace-hero.png"
+                alt="Verified handloom textile on an artisan table"
+              />
               <div>
                 <span class="label">Consumer story page</span>
                 <h2 id="storyProductName">Product story</h2>
@@ -147,7 +157,11 @@
               <span class="label">Manual verification</span>
               <h2>Verify by product ID, certificate ID, or hash</h2>
               <div class="field-row">
-                <input id="verifyInput" type="text" placeholder="Paste product ID, certificate ID, or trace hash" />
+                <input
+                  id="verifyInput"
+                  type="text"
+                  placeholder="Paste product ID, certificate ID, or trace hash"
+                />
                 <button class="btn primary" id="verifyInputBtn" type="button">Verify</button>
               </div>
               <div id="manualVerifyResult" class="result-card compact"></div>
@@ -209,13 +223,19 @@
                 <input id="shareUrl" type="text" readonly aria-label="Shareable certificate URL" />
                 <button class="btn primary" id="copyShare" type="button">Copy link</button>
               </div>
-              <button class="btn ghost" id="downloadReceipt" type="button">Download buyer receipt</button>
+              <button class="btn ghost" id="downloadReceipt" type="button">
+                Download buyer receipt
+              </button>
             </article>
 
             <article class="panel weave-panel">
               <span class="label">Weave inspection</span>
               <h2>Pattern microscope</h2>
-              <div id="weaveViewer" class="weave-viewer" aria-label="Interactive textile pattern preview"></div>
+              <div
+                id="weaveViewer"
+                class="weave-viewer"
+                aria-label="Interactive textile pattern preview"
+              ></div>
               <div id="culturalCard" class="cultural-card"></div>
             </article>
 
@@ -275,9 +295,12 @@
                 </label>
                 <label class="full">
                   Product story
-                  <textarea name="story" required>Handwoven with natural indigo in a registered Pochampally cluster, designed for daily wear while preserving the ikat grid tradition.</textarea>
+                  <textarea name="story" required>
+Handwoven with natural indigo in a registered Pochampally cluster, designed for daily wear while preserving the ikat grid tradition.</textarea>
                 </label>
-                <button class="btn ghost full" id="generateStory" type="button">Generate stronger product story</button>
+                <button class="btn ghost full" id="generateStory" type="button">
+                  Generate stronger product story
+                </button>
                 <button class="btn primary full" type="submit">Register and hash product</button>
               </form>
             </article>
@@ -288,7 +311,12 @@
                   <span class="label">Registry</span>
                   <h2>Certified products</h2>
                 </div>
-                <input id="productSearch" class="search" type="search" placeholder="Search products" />
+                <input
+                  id="productSearch"
+                  class="search"
+                  type="search"
+                  placeholder="Search products"
+                />
               </div>
               <div id="productGrid" class="product-grid"></div>
             </article>
@@ -335,9 +363,12 @@
                 </label>
                 <label class="full">
                   Story
-                  <textarea name="story" required>Works with natural dye batches and trains younger weavers to keep handloom color processes consistent.</textarea>
+                  <textarea name="story" required>
+Works with natural dye batches and trains younger weavers to keep handloom color processes consistent.</textarea>
                 </label>
-                <button class="btn ghost full" id="voiceStory" type="button">Voice capture story</button>
+                <button class="btn ghost full" id="voiceStory" type="button">
+                  Voice capture story
+                </button>
                 <button class="btn primary full" type="submit">Save weaver profile</button>
               </form>
             </article>
@@ -356,10 +387,12 @@
               <span class="label">Ledger integrity</span>
               <h2>Tamper-evident chain</h2>
               <p class="muted">
-                Each product registration and scan creates a block containing the previous
-                block hash. The app recalculates hashes to detect tampering.
+                Each product registration and scan creates a block containing the previous block
+                hash. The app recalculates hashes to detect tampering.
               </p>
-              <button class="btn secondary" id="verifyChain" type="button">Re-verify ledger integrity</button>
+              <button class="btn secondary" id="verifyChain" type="button">
+                Re-verify ledger integrity
+              </button>
               <div id="chainResult" class="result-card compact"></div>
             </article>
             <article class="panel">
@@ -380,7 +413,12 @@
             <article class="panel wide">
               <span class="label">Real-time scans</span>
               <h2>Verification trend</h2>
-              <svg id="trendChart" viewBox="0 0 760 260" role="img" aria-label="Verification trend chart"></svg>
+              <svg
+                id="trendChart"
+                viewBox="0 0 760 260"
+                role="img"
+                aria-label="Verification trend chart"
+              ></svg>
             </article>
             <article class="panel">
               <span class="label">Craft coverage</span>
@@ -426,18 +464,40 @@
               <span class="label">Integration readiness</span>
               <h2>System capabilities</h2>
               <div class="capability-list">
-                <article><strong>Web Crypto SHA-256</strong><span>Browser-native product and block hashing.</span></article>
-                <article><strong>Node API persistence</strong><span>Live server stores registry state as durable JSON.</span></article>
-                <article><strong>Server-Sent Events</strong><span>Open dashboards receive scan and registry updates in real time.</span></article>
-                <article><strong>Offline fallback</strong><span>Records continue locally when the backend is unavailable.</span></article>
-                <article><strong>PWA cache</strong><span>Core interface and visual assets are cached for low-bandwidth demos.</span></article>
-                <article><strong>API export</strong><span>One-click JSON package for a backend, cooperative, or government registry.</span></article>
+                <article>
+                  <strong>Web Crypto SHA-256</strong
+                  ><span>Browser-native product and block hashing.</span>
+                </article>
+                <article>
+                  <strong>Node API persistence</strong
+                  ><span>Live server stores registry state as durable JSON.</span>
+                </article>
+                <article>
+                  <strong>Server-Sent Events</strong
+                  ><span>Open dashboards receive scan and registry updates in real time.</span>
+                </article>
+                <article>
+                  <strong>Offline fallback</strong
+                  ><span>Records continue locally when the backend is unavailable.</span>
+                </article>
+                <article>
+                  <strong>PWA cache</strong
+                  ><span>Core interface and visual assets are cached for low-bandwidth demos.</span>
+                </article>
+                <article>
+                  <strong>API export</strong
+                  ><span
+                    >One-click JSON package for a backend, cooperative, or government
+                    registry.</span
+                  >
+                </article>
               </div>
             </article>
             <article class="panel">
               <span class="label">Endpoint blueprint</span>
               <h2>Production API contract</h2>
-              <pre class="code-block">GET  /api/health
+              <pre class="code-block">
+GET  /api/health
 GET  /api/state
 PUT  /api/state
 GET  /api/events
@@ -456,6 +516,6 @@ POST /api/reset</pre>
     </div>
 
     <template id="downloadTemplate"></template>
-    <script src="app.js"></script>
+    <script src="app.js?v=20260719-i18n-ui"></script>
   </body>
 </html>

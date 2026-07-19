@@ -40,40 +40,40 @@ TT-PCH-001
 
 This repository includes `vercel.json` for a static Vercel deployment.
 
-| Setting | Value |
-|---|---|
-| Framework Preset | Other |
-| Build Command | Managed by `vercel.json` |
-| Output Directory | `public` |
-| Root Redirect | `/` -> `/tantritrace-ultimate/` |
-| Runtime API | Local Node prototype via `npm run serve:prototype`; deployed frontend falls back to browser-local state if `/api` is unavailable |
+| Setting          | Value                                                                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Framework Preset | Other                                                                                                                            |
+| Build Command    | Managed by `vercel.json`                                                                                                         |
+| Output Directory | `public`                                                                                                                         |
+| Root Redirect    | `/` -> `/tantritrace-ultimate/`                                                                                                  |
+| Runtime API      | Local Node prototype via `npm run serve:prototype`; deployed frontend falls back to browser-local state if `/api` is unavailable |
 
 Deploy from GitHub by importing `sleader3221-dot/Tantri_Trace` into Vercel. The static app works without installing dependencies because the production prototype files already live under `public/tantritrace-ultimate/`.
 
 ## What Makes It Submission-Ready
 
-| Judge Lens | TantriTrace Evidence | Working Prototype Surface |
-|---|---|---|
+| Judge Lens     | TantriTrace Evidence                                                                                            | Working Prototype Surface                                         |
+| -------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | Best Prototype | End-to-end product registration, scan verification, consumer certificate, risk queue, analytics, API, PWA cache | Operations, Consumer, Verify, Registry, Ledger, Analytics, Impact |
-| Weaver Impact | Product proof keeps the weaver name attached to retail and export value | Weaver portfolio, buyer impact receipt, income lift metrics |
-| Scalability | Same certificate, ledger, and cluster model works across handloom clusters and adjacent craft sectors | Generic product/weaver schema and REST API |
-| Market Access | QR-style scan converts anonymous textile sale into authenticated story and premium proof | Consumer certificate and share link |
-| Fraud Control | Unknown IDs, tamper mismatches, duplicate-scan pressure, and manual fraud reports are captured | Fraud queue, risk score, ledger blocks |
-| Government Fit | API-ready data model for cooperatives, GI verification, Handloom Mark style records, and registry export | JSON export and `/api/*` endpoints |
+| Weaver Impact  | Product proof keeps the weaver name attached to retail and export value                                         | Weaver portfolio, buyer impact receipt, income lift metrics       |
+| Scalability    | Same certificate, ledger, and cluster model works across handloom clusters and adjacent craft sectors           | Generic product/weaver schema and REST API                        |
+| Market Access  | QR-style scan converts anonymous textile sale into authenticated story and premium proof                        | Consumer certificate and share link                               |
+| Fraud Control  | Unknown IDs, tamper mismatches, duplicate-scan pressure, and manual fraud reports are captured                  | Fraud queue, risk score, ledger blocks                            |
+| Government Fit | API-ready data model for cooperatives, GI verification, Handloom Mark style records, and registry export        | JSON export and `/api/*` endpoints                                |
 
 ## Product Screens
 
-| View | Purpose | Key Interactions |
-|---|---|---|
-| Operations | Control center for product scan, live feed, certificate, and KPIs | Select product, verify trace, run tamper check |
-| Verify | Manual authenticity desk and fraud triage | Verify by product ID, certificate ID, or hash |
-| Consumer | Public buyer-facing certificate and story | Copy share link, listen to story, download receipt |
-| Registry | Create new item-level product proof | Register product, generate stronger story, hash certificate |
-| Weavers | Build maker profiles and link them to products | Register weaver, view portfolio and projected income lift |
-| Ledger | Recalculate and inspect tamper-evident blocks | Verify chain integrity and export API payload |
-| Analytics | Scan, craft, premium, and anomaly charts | Inspect demand, risk, and cluster performance |
-| Impact | Cluster intelligence and submission readiness | Measure protected premium, labor days, and scale signals |
-| Integrations | API and capability map | Review production integration contract |
+| View         | Purpose                                                           | Key Interactions                                            |
+| ------------ | ----------------------------------------------------------------- | ----------------------------------------------------------- |
+| Operations   | Control center for product scan, live feed, certificate, and KPIs | Select product, verify trace, run tamper check              |
+| Verify       | Manual authenticity desk and fraud triage                         | Verify by product ID, certificate ID, or hash               |
+| Consumer     | Public buyer-facing certificate and story                         | Copy share link, listen to story, download receipt          |
+| Registry     | Create new item-level product proof                               | Register product, generate stronger story, hash certificate |
+| Weavers      | Build maker profiles and link them to products                    | Register weaver, view portfolio and projected income lift   |
+| Ledger       | Recalculate and inspect tamper-evident blocks                     | Verify chain integrity and export API payload               |
+| Analytics    | Scan, craft, premium, and anomaly charts                          | Inspect demand, risk, and cluster performance               |
+| Impact       | Cluster intelligence and submission readiness                     | Measure protected premium, labor days, and scale signals    |
+| Integrations | API and capability map                                            | Review production integration contract                      |
 
 ## System Architecture
 
@@ -212,61 +212,61 @@ xychart-beta
 
 ### Capability Coverage
 
-| Capability | Status | Implementation |
-|---|---:|---|
+| Capability                  |   Status | Implementation                                        |
+| --------------------------- | -------: | ----------------------------------------------------- |
 | Product certificate hashing | Complete | Web Crypto SHA-256 in browser, Node crypto on backend |
-| Tamper-evident ledger | Complete | Previous-hash chain with recalculation endpoint |
-| Real-time sync | Complete | Server-Sent Events over `/api/events` |
-| Durable local server state | Complete | `data/tantritrace-state.json` |
-| Offline fallback | Complete | `localStorage` plus PWA service worker cache |
-| Consumer story page | Complete | Public certificate, share URL, read-aloud story |
-| Retailer batch scan | Complete | Batch verification and risk scoring |
-| Fraud workflow | Complete | Unknown verify, tamper check, manual report API |
-| Analytics | Complete | Scan trend, craft coverage, premium lift, risk chart |
-| Submission docs | Complete | `README.md` and `SUBMISSION.md` |
+| Tamper-evident ledger       | Complete | Previous-hash chain with recalculation endpoint       |
+| Real-time sync              | Complete | Server-Sent Events over `/api/events`                 |
+| Durable local server state  | Complete | `data/tantritrace-state.json`                         |
+| Offline fallback            | Complete | `localStorage` plus PWA service worker cache          |
+| Consumer story page         | Complete | Public certificate, share URL, read-aloud story       |
+| Retailer batch scan         | Complete | Batch verification and risk scoring                   |
+| Fraud workflow              | Complete | Unknown verify, tamper check, manual report API       |
+| Analytics                   | Complete | Scan trend, craft coverage, premium lift, risk chart  |
+| Submission docs             | Complete | `README.md` and `SUBMISSION.md`                       |
 
 ## Tech Stack
 
-| Layer | Technology | Why It Was Chosen |
-|---|---|---|
-| Product UI | HTML5, CSS3, Vanilla JavaScript | Fast, portable, dependency-light, works in hackathon judging environments |
-| Live backend | Node.js native `http` server | No framework lock-in, easy to inspect, easy to run |
-| Crypto proof | Web Crypto API and Node `crypto` | Real SHA-256 hashing without external services |
-| Real-time | Server-Sent Events | Simple, reliable, browser-native live updates |
-| Persistence | JSON state store | Transparent demo data that judges can inspect |
-| Offline mode | `localStorage`, Web Manifest, Service Worker | Useful for rural/low-bandwidth demo conditions |
-| App shell | TanStack/Lovable project wrapper | Existing project structure preserved |
-| Visual analytics | Inline SVG, CSS bars, Mermaid docs | No fragile chart runtime dependency |
+| Layer            | Technology                                   | Why It Was Chosen                                                         |
+| ---------------- | -------------------------------------------- | ------------------------------------------------------------------------- |
+| Product UI       | HTML5, CSS3, Vanilla JavaScript              | Fast, portable, dependency-light, works in hackathon judging environments |
+| Live backend     | Node.js native `http` server                 | No framework lock-in, easy to inspect, easy to run                        |
+| Crypto proof     | Web Crypto API and Node `crypto`             | Real SHA-256 hashing without external services                            |
+| Real-time        | Server-Sent Events                           | Simple, reliable, browser-native live updates                             |
+| Persistence      | JSON state store                             | Transparent demo data that judges can inspect                             |
+| Offline mode     | `localStorage`, Web Manifest, Service Worker | Useful for rural/low-bandwidth demo conditions                            |
+| App shell        | TanStack/Lovable project wrapper             | Existing project structure preserved                                      |
+| Visual analytics | Inline SVG, CSS bars, Mermaid docs           | No fragile chart runtime dependency                                       |
 
 ## API Reference
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| `GET` | `/api/health` | Check live server status |
-| `GET` | `/api/state` | Read full registry state |
-| `PUT` | `/api/state` | Persist full synchronized state |
-| `GET` | `/api/events` | Subscribe to live SSE state updates |
-| `POST` | `/api/scan` | Record a product scan |
-| `POST` | `/api/verify` | Verify product ID, certificate ID, or hash |
-| `POST` | `/api/products` | Register and hash a product |
-| `GET` | `/api/products/{id}/certificate` | Read public certificate payload |
-| `POST` | `/api/weavers` | Register a weaver profile |
-| `GET` | `/api/ledger/verify` | Recalculate ledger integrity |
-| `POST` | `/api/fraud/report` | Submit suspicious scan report |
-| `POST` | `/api/reset` | Restore clean seeded demo state |
+| Method | Endpoint                         | Purpose                                    |
+| ------ | -------------------------------- | ------------------------------------------ |
+| `GET`  | `/api/health`                    | Check live server status                   |
+| `GET`  | `/api/state`                     | Read full registry state                   |
+| `PUT`  | `/api/state`                     | Persist full synchronized state            |
+| `GET`  | `/api/events`                    | Subscribe to live SSE state updates        |
+| `POST` | `/api/scan`                      | Record a product scan                      |
+| `POST` | `/api/verify`                    | Verify product ID, certificate ID, or hash |
+| `POST` | `/api/products`                  | Register and hash a product                |
+| `GET`  | `/api/products/{id}/certificate` | Read public certificate payload            |
+| `POST` | `/api/weavers`                   | Register a weaver profile                  |
+| `GET`  | `/api/ledger/verify`             | Recalculate ledger integrity               |
+| `POST` | `/api/fraud/report`              | Submit suspicious scan report              |
+| `POST` | `/api/reset`                     | Restore clean seeded demo state            |
 
 ## Validation Matrix
 
-| Check | Result |
-|---|---|
-| `node --check server.mjs` | Pass |
-| `node --check public/tantritrace-ultimate/app.js` | Pass |
-| `node --check public/tantritrace-ultimate/sw.js` | Pass |
-| App page HTTP response | `200` |
-| JS, CSS, manifest, service worker, favicon responses | `200` |
-| `/api/health` | `200` |
-| `/api/ledger/verify` | Valid |
-| Clean seeded state | 6 products, 6 weavers, 7 ledger blocks, 0 fraud records after `/api/reset` |
+| Check                                                | Result                                                                     |
+| ---------------------------------------------------- | -------------------------------------------------------------------------- |
+| `node --check prototype-server.mjs`                  | Pass                                                                       |
+| `node --check public/tantritrace-ultimate/app.js`    | Pass                                                                       |
+| `node --check public/tantritrace-ultimate/sw.js`     | Pass                                                                       |
+| App page HTTP response                               | `200`                                                                      |
+| JS, CSS, manifest, service worker, favicon responses | `200`                                                                      |
+| `/api/health`                                        | `200`                                                                      |
+| `/api/ledger/verify`                                 | Valid                                                                      |
+| Clean seeded state                                   | 6 products, 6 weavers, 7 ledger blocks, 0 fraud records after `/api/reset` |
 
 ## Project Structure
 
@@ -274,7 +274,7 @@ xychart-beta
 .
 |-- README.md
 |-- SUBMISSION.md
-|-- server.mjs
+|-- prototype-server.mjs
 |-- package.json
 |-- data/
 |   `-- .gitkeep

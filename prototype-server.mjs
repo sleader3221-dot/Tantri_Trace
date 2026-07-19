@@ -89,7 +89,9 @@ function createHashForProduct(product) {
 }
 
 function certificateId(product) {
-  return `TT-CERT-${product.id}-${String(product.hash || "").slice(0, 6).toUpperCase()}`;
+  return `TT-CERT-${product.id}-${String(product.hash || "")
+    .slice(0, 6)
+    .toUpperCase()}`;
 }
 
 function extractConstArray(source, name) {
@@ -133,9 +135,21 @@ function extractConstArray(source, name) {
 async function loadSeedArrays() {
   const source = await readFile(appScriptPath, "utf8");
   return {
-    seedWeavers: vm.runInNewContext(extractConstArray(source, "seedWeavers"), {}, { timeout: 1000 }),
-    seedProducts: vm.runInNewContext(extractConstArray(source, "seedProducts"), {}, { timeout: 1000 }),
-    fallbackJourney: vm.runInNewContext(extractConstArray(source, "fallbackJourney"), {}, { timeout: 1000 }),
+    seedWeavers: vm.runInNewContext(
+      extractConstArray(source, "seedWeavers"),
+      {},
+      { timeout: 1000 },
+    ),
+    seedProducts: vm.runInNewContext(
+      extractConstArray(source, "seedProducts"),
+      {},
+      { timeout: 1000 },
+    ),
+    fallbackJourney: vm.runInNewContext(
+      extractConstArray(source, "fallbackJourney"),
+      {},
+      { timeout: 1000 },
+    ),
   };
 }
 
@@ -228,10 +242,14 @@ function validateWeaver(weaver) {
 }
 
 function findProductByValue(value) {
-  const query = String(value || "").trim().toLowerCase();
+  const query = String(value || "")
+    .trim()
+    .toLowerCase();
   if (!query) return undefined;
   return state.products.find((product) =>
-    [product.id, product.certId, product.hash].some((candidate) => String(candidate || "").toLowerCase() === query),
+    [product.id, product.certId, product.hash].some(
+      (candidate) => String(candidate || "").toLowerCase() === query,
+    ),
   );
 }
 
@@ -264,7 +282,8 @@ function verifyLedgerIntegrity() {
     const expectedPrevious = index === 0 ? "0" : state.ledger[index - 1].hash;
     const cloneBlock = { ...block };
     delete cloneBlock.hash;
-    if (block.previousHash !== expectedPrevious) return { valid: false, failedAt: index, reason: "previous-hash mismatch" };
+    if (block.previousHash !== expectedPrevious)
+      return { valid: false, failedAt: index, reason: "previous-hash mismatch" };
     if (block.hash !== sha256(JSON.stringify(cloneBlock))) {
       return { valid: false, failedAt: index, reason: "block hash mismatch" };
     }
@@ -308,7 +327,8 @@ async function persistState() {
 }
 
 function normalizeState(nextState) {
-  if (!nextState || typeof nextState !== "object") throw new Error("State payload must be an object");
+  if (!nextState || typeof nextState !== "object")
+    throw new Error("State payload must be an object");
   if (nextState.version !== 2) throw new Error("Unsupported state version");
   for (const key of ["weavers", "products", "ledger", "events", "fraud", "trend"]) {
     if (!Array.isArray(nextState[key])) throw new Error(`State field ${key} must be an array`);
@@ -370,7 +390,12 @@ async function handleApi(request, response, url) {
   await ensureState();
 
   if (request.method === "GET" && url.pathname === "/api/health") {
-    jsonResponse(response, 200, { ok: true, mode: "live", products: state.products.length, events: state.events.length });
+    jsonResponse(response, 200, {
+      ok: true,
+      mode: "live",
+      products: state.products.length,
+      events: state.events.length,
+    });
     return true;
   }
 
@@ -408,7 +433,13 @@ async function handleApi(request, response, url) {
     if (product) {
       await recordScan(product.id, payload.source || "API verification");
       await saveAndBroadcast("verify");
-      jsonResponse(response, 200, { ok: true, status: "authentic", product, certificate: buildCertificate(product), state });
+      jsonResponse(response, 200, {
+        ok: true,
+        status: "authentic",
+        product,
+        certificate: buildCertificate(product),
+        state,
+      });
       return true;
     }
 
@@ -451,7 +482,9 @@ async function handleApi(request, response, url) {
 
   const certificateMatch = url.pathname.match(/^\/api\/products\/([^/]+)\/certificate$/);
   if (request.method === "GET" && certificateMatch) {
-    const product = state.products.find((item) => item.id === decodeURIComponent(certificateMatch[1]));
+    const product = state.products.find(
+      (item) => item.id === decodeURIComponent(certificateMatch[1]),
+    );
     if (!product) {
       jsonResponse(response, 404, { error: "Product not found" });
       return true;
@@ -464,7 +497,11 @@ async function handleApi(request, response, url) {
     const payload = await readJsonBody(request);
     const weaver = validateWeaver(payload.weaver || {});
     state.weavers.unshift(weaver);
-    await createBlock("REGISTER_WEAVER", { weaverId: weaver.id, name: weaver.name, cluster: weaver.cluster });
+    await createBlock("REGISTER_WEAVER", {
+      weaverId: weaver.id,
+      name: weaver.name,
+      cluster: weaver.cluster,
+    });
     addEvent("Weaver registered", `${weaver.name} added to ${weaver.cluster}.`);
     await saveAndBroadcast("register-weaver");
     jsonResponse(response, 201, { ok: true, weaver, state });
@@ -485,7 +522,10 @@ async function handleApi(request, response, url) {
       timestamp: nowIso(),
       productId,
       title: requireText(payload.title || "Fraud report", "Fraud title").slice(0, 160),
-      detail: requireText(payload.detail || "Suspicious verification signal submitted.", "Fraud detail").slice(0, 500),
+      detail: requireText(
+        payload.detail || "Suspicious verification signal submitted.",
+        "Fraud detail",
+      ).slice(0, 500),
     };
     state.fraud.unshift(fraud);
     await createBlock("FRAUD_REPORT", { productId, severity: fraud.severity, title: fraud.title });
