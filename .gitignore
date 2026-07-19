@@ -16,6 +16,10 @@ dist-ssr
 .nitro
 *.local
 
+# Runtime prototype state
+data/*.json
+!data/.gitkeep
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars

@@ -252,7 +252,7 @@ xychart-beta
 | JS, CSS, manifest, service worker, favicon responses | `200` |
 | `/api/health` | `200` |
 | `/api/ledger/verify` | Valid |
-| Clean seeded state | 6 products, 6 weavers, 7 ledger blocks, 0 fraud records |
+| Clean seeded state | 6 products, 6 weavers, 7 ledger blocks, 0 fraud records after `/api/reset` |
 
 ## Project Structure
 
@@ -263,7 +263,7 @@ xychart-beta
 |-- server.mjs
 |-- package.json
 |-- data/
-|   `-- tantritrace-state.json
+|   `-- .gitkeep
 |-- public/
 |   |-- favicon.svg
 |   |-- assets/
@@ -277,6 +277,8 @@ xychart-beta
 `-- src/
     `-- TanStack/Lovable wrapper routes and UI primitives
 ```
+
+`data/tantritrace-state.json` is created automatically at runtime and ignored by git so scan/reset activity does not pollute commits.
 
 ## Demo Script
 
